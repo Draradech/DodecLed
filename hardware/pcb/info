@@ -1,0 +1,125 @@
+{
+  "uuid": "c74afec5e1412f1b8acf1b981deace0c",
+  "path": "Offline/DodecLed",
+  "name": "DodecLed",
+  "content": "",
+  "created_at": "2021-05-23 17:36:04",
+  "updated_at": "2021-05-23 19:13:20",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "b118e257cdf5481994c2f41fdf742f70",
+      "title": "Sheet_1",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "9eb094f4c71549a4946ce02fc17c4099": 5,
+        "fa21b000d3d14043b770f524fd9009d9": 5,
+        "4894105b4c8248809e019c69c04055c0": 5,
+        "d6e4f7f16bc143eca0709d55ab1491d5": 7
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "WS2812C",
+          5,
+          "LED-SMD_4P-L5.0-W5.0-TL",
+          "LED4,LED1,LED5,LED3,LED2",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "Worldsemi",
+            "BOM_Manufacturer Part": "WS2812C",
+            "BOM_Supplier Part": "C114587",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "cd48641628d44d2eb34ad00d857b0a99",
+            "uuid": "9eb094f4c71549a4946ce02fc17c4099"
+          }
+        ],
+        [
+          "75",
+          5,
+          "R0805",
+          "R4,R5,R3,R1,R2",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C224747",
+            "BOM_Manufacturer": "ROHM Semicon",
+            "BOM_Manufacturer Part": "MCR10ERTF75R0",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "b60f399a7a7e41848b2be1eb49c79141",
+            "uuid": "4894105b4c8248809e019c69c04055c0"
+          }
+        ],
+        [
+          "MTB125-1102R1",
+          7,
+          "HDR-TH_2P-P2.54-H-W10.0",
+          "H1,H7,H2,H3,H4,H5,H6",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C376120",
+            "BOM_Manufacturer": "MINTRON",
+            "BOM_Manufacturer Part": "MTB125-1102R1",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "6b2bf4d849054445986318e327a020b0",
+            "uuid": "d6e4f7f16bc143eca0709d55ab1491d5"
+          }
+        ],
+        [
+          "100nF",
+          5,
+          "C0805",
+          "C3,C4,C1,C2,C5",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C282732",
+            "BOM_Manufacturer": "CCTC",
+            "BOM_Manufacturer Part": "TCC0805X7R104K500DT",
+            "puuid": "2ee8eb13a0124a108e622ce40c0c25a8",
+            "uuid": "fa21b000d3d14043b770f524fd9009d9"
+          }
+        ]
+      ],
+      "updateTime": 1621785196,
+      "createTime": 1621785196,
+      "histories": [],
+      "created_at": "2021-05-23 17:53:16",
+      "updated_at": "2021-05-23 17:53:16"
+    },
+    {
+      "uuid": "422c33e5e766497e60ca744639a106d5",
+      "puuid": "c74afec5e1412f1b8acf1b981deace0c",
+      "title": "PCB_DodecLed",
+      "filename": "PCB_DodecLed.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "cd48641628d44d2eb34ad00d857b0a99": 5,
+        "b60f399a7a7e41848b2be1eb49c79141": 5,
+        "2ee8eb13a0124a108e622ce40c0c25a8": 5,
+        "6b2bf4d849054445986318e327a020b0": 7
+      },
+      "BOM": [],
+      "updateTime": 1621790000,
+      "createTime": 1621787335,
+      "histories": [],
+      "created_at": "2021-05-23 18:28:55",
+      "updated_at": "2021-05-23 19:13:20"
+    }
+  ],
+  "sort": [],
+  "title": "DodecLed",
+  "foldername": "DodecLed",
+  "schfilename": "DodecLed.json",
+  "schfilemtime": 1621785196189
+}
