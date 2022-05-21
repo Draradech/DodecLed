@@ -28,7 +28,22 @@ void loopLeds()
   {
     animationStep();
     last += 20000;
-    voltage = 0.999 * voltage + 0.001 * voltageraw;
+    if(initVoltageCount > 0)
+    {
+      initVoltageCount--;
+      if(initVoltageCount > 90)
+      {
+        voltage = 0.5 * voltage + 0.5 * voltageraw;
+      }
+      else
+      {
+        voltage = 0.9 * voltage + 0.1 * voltageraw;
+      }
+    }
+    else
+    {
+      voltage = 0.999 * voltage + 0.001 * voltageraw;
+    }
   }
 }
 
@@ -42,7 +57,7 @@ int slowdelay;
 
 void animationStep()
 {
-  if(voltage < 10)
+  if(voltage < 10.5)
   {
     FastLED.setBrightness(40);
     for(int i = spinner; i < NUMLEDS; i+=5)
