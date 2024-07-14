@@ -16,11 +16,11 @@ void loopVoltage(void)
 {
   if(initVoltageCount > 80)
   {
-    voltageraw = 0.9 * voltageraw + 0.1 * (analogReadMilliVolts(36) * 0.001 * 11.0 + offset);
+    voltageraw = 0.9 * voltageraw + 0.1 * (analogRead(36) * 0.001 * 11.0 + offset);
   }
   else
   {
-    voltageraw = 0.999 * voltageraw + 0.001 * (analogReadMilliVolts(36) * 0.001 * 11.0 + offset);
+    voltageraw = 0.999 * voltageraw + 0.001 * (analogRead(36) * 0.001 * 11.0 + offset);
   }
 
   unsigned long now = micros();
