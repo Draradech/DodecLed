@@ -1,6 +1,13 @@
+#include "stdinc.h"
+
+#include <WebServer.h>
+
+void handleControl(void);
+void handleNotFound(void);
+
 WebServer server(80);
 
-void setupWeb()
+void setupWeb(void)
 {
   server.on("/control", handleControl);
   server.onNotFound(handleNotFound);
@@ -9,16 +16,16 @@ void setupWeb()
   Serial.println("HTTP server started");
 }
 
-void loopWeb()
+void loopWeb(void)
 {
   server.handleClient();
 }
 
-String beginhtml = "<html><head><style>body{text-align: center; font-family: sans-serif;background-color: #55aabb} a{color: #000000;}</style>";
-String midhtml = "</head><body><h1>Wifi Led Controller</h1>";
-String endhtml = "</body></html>";
+static String beginhtml = "<html><head><style>body{text-align: center; font-family: sans-serif;background-color: #55aabb} a{color: #000000;}</style>";
+static String midhtml = "</head><body><h1>Wifi Led Controller</h1>";
+static String endhtml = "</body></html>";
 
-void handleControl()
+void handleControl(void)
 {
   int localmode = -1;
   int led = -1;
@@ -42,51 +49,43 @@ void handleControl()
 
   String message = "";
   bool refresh = true;
-  switch(localmode)
+
+  if(animation != localmode)
   {
-    case 1:
-      refresh = false;
-      if (  (led != -1)
-         && (color != -1)
-         )
-      {
-        if(mode != 1)
-        {
-          for(int i = 0; i < NUMLEDS; i++)
-          {
-            leds[i] = CRGB::Black;
-          }
-          mode = 1;
-        }
-        leds[led] = color;
-      }
-      else
-      {
-        message = "<br>error evaluating arguments";
-      }
-      break;
-    default:
-      if(mode != localmode)
-      {
-        for(int i = 0; i < NUMLEDS; i++)
-        {
-          leds[i] = CRGB::Black;
-        }
-        mode = localmode;
-      }
+    for(int i = 0; i < NUMLEDS; i++)
+    {
+      leds[i] = CRGB::Black;
+    }
+    animation = localmode;
   }
+
+  if(animation == 1)
+  {
+    refresh = false;
+    if (  (led != -1)
+       && (color != -1)
+       )
+    {
+      leds[led] = color;
+    }
+    else
+    {
+      message = "<br>error evaluating arguments";
+    }
+  }
+  
   server.send(200, "text/html",
     beginhtml +
     (refresh ? "<meta http-equiv=\"refresh\" content=\"2; url=/\">" : "") +
     midhtml +
-    "<p>Mode " + String(mode) +
+    "<p>Mode " + String(animation) +
     message +
     "</p>" +
     endhtml
   );
 }
 
-void handleNotFound()
+void handleNotFound(void)
 {
   server.send(200, "text/html",
     beginhtml +

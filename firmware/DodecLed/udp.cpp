@@ -1,17 +1,20 @@
-WiFiUDP udp;
+#include "stdinc.h"
 
-void setupUdp()
+#include <WiFiUdp.h>
+
+static WiFiUDP udp;
+
+void setupUdp(void)
 {
   udp.begin(2323);
-  Serial.println("Listening on UDP 2323");
 }
 
-void loopUdp()
+void loopUdp(void)
 {
   int cb = udp.parsePacket();
   if (cb == NUMLEDS * 3)
   {
     udp.read((char*)leds, cb);
-    mode = 1;
+    animation = 1;
   }
 }
