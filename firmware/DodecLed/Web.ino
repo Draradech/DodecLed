@@ -44,37 +44,19 @@ void handleControl()
   bool refresh = true;
   switch(localmode)
   {
-    case 0:
     case 1:
-    case 2:
-    {
-      mode = localmode;
-      break;
-    }
-    case 3:
-      if(mode != 3)
-      {
-        for(int i = 0; i < NUMLEDS; i++)
-        {
-          leds[i] = CRGB::Black;
-        }
-        mode = 3;
-      }
-      break;
-    case 4:
-    {
       refresh = false;
       if (  (led != -1)
          && (color != -1)
          )
       {
-        if(mode != 4)
+        if(mode != 1)
         {
           for(int i = 0; i < NUMLEDS; i++)
           {
             leds[i] = CRGB::Black;
           }
-          mode = 4;
+          mode = 1;
         }
         leds[led] = color;
       }
@@ -82,7 +64,16 @@ void handleControl()
       {
         message = "<br>error evaluating arguments";
       }
-    }
+      break;
+    default:
+      if(mode != localmode)
+      {
+        for(int i = 0; i < NUMLEDS; i++)
+        {
+          leds[i] = CRGB::Black;
+        }
+        mode = localmode;
+      }
   }
   server.send(200, "text/html",
     beginhtml +
@@ -100,10 +91,13 @@ void handleNotFound()
   server.send(200, "text/html",
     beginhtml +
     midhtml +
-    "<a href=control?mode=0>Mode 0</a><br>" +
-    "<a href=control?mode=1>Mode 1</a><br>" +
+    "<a href=control?mode=0>Off</a><br>" +
+    "<a href=control?mode=1&led=5&color=0xffffff>Mode 1 (set leds)</a><br>" +
     "<a href=control?mode=2>Mode 2</a><br>" +
     "<a href=control?mode=3>Mode 3</a><br>" +
+    "<a href=control?mode=4>Mode 4</a><br>" +
+    "<a href=control?mode=5>Mode 5</a><br>" +
+    "<a href=control?mode=6>Mode 6</a><br>" +
     String(voltage) + " V<br>" +
     endhtml
   );

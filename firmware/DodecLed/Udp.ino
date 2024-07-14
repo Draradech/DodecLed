@@ -12,6 +12,6 @@ void loopUdp()
   if (cb == NUMLEDS * 3)
   {
     udp.read((char*)leds, cb);
-    mode = 5;
+    mode = 1;
   }
 }
